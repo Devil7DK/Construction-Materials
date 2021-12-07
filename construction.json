@@ -1,0 +1,12 @@
+[
+  { "id": "Brass", "price": "100" },
+  { "id": "Stone", "price": "50" },
+  { "id": "Granite", "price": "500" },
+  { "id": "Plexiglass", "price": "150" },
+  { "id": "Wood", "price": "200" },
+  { "id": "Glass", "price": "80" },
+  { "id": "Rubber", "price": "50" },
+  { "id": "Plastic", "price": "30" },
+  { "id": "Aluminum", "price": "200" },
+  { "id": "Vinyl", "price": "120" }
+]
