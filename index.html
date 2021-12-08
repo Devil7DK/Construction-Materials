@@ -15,26 +15,32 @@
     <link rel="stylesheet" href="/main.css" />
   </head>
   <body>
+    <h1 id="title">CONSTRUCTION MATERIALS</h1>
+    <h2 id="sub-heading">Products</h2>
     <!-- !*MODAL SECTION ----------------------------->
     <div id="modal-background">
       <div id="modal" class="modal">
+        <h2>Cart</h2>
         <i id="close-btn" class="fas fa-times"></i>
-        <p class="modal-total-text">
-          Total:
-          <span class="grand-total">
-            <i class="fa fa-inr"></i>
-            0</span
-          >
-        </p>
+
+        <div class="checkout-section">
+          <p class="modal-total-text">
+            Total:
+            <span class="grand-total">
+              <i class="fa fa-inr"></i>
+              0</span
+            >
+          </p>
+          <button id="rzp-button1">Check Out</button>
+        </div>
       </div>
     </div>
-
-    <div id="container">
-      <h1>PRODUCTS</h1>
+    <div class="main-container">
+      <div id="container"></div>
     </div>
 
-    <button id="cart">go to cart</button>
-
+    <button id="cart">Go to cart</button>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.6.0.js"
       integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
