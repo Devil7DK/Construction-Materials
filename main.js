@@ -134,42 +134,37 @@ function checkIfArrayIsUnique(myArray) {
 }
 
 // *! Razorpay ////////////////////////////////////////////////////
-
-var myHeaders = new Headers();
-myHeaders.append(
-  "Authorization",
-  "Basic cnpwX3Rlc3RfVnVKVG9MZUVwdElBOTE6SXB2S1RWZWpQUzB1V3BvdHdOS3dBVm1G"
-);
-myHeaders.append("Content-Type", "application/json");
-
-var raw = JSON.stringify({
-  amount: 10000,
-  currency: "INR",
-  receipt: "rcptid_11",
-});
-
-var requestOptions = {
+fetch("https://api.razorpay.com/v1/orders", {
   method: "POST",
   mode: "no-cors",
-  headers: myHeaders,
-  body: raw,
-  redirect: "follow",
-};
-
-fetch("https://api.razorpay.com/v1/orders", requestOptions)
-  .then((response) => response.text())
-  .then((result) => console.log(result))
-  .catch((error) => console.log("error", error));
+  headers: {
+    "Content-type": "application/json",
+    Authorization:
+      "Basic cnpwX3Rlc3RfeXc4MlVWZHFiNjNMTFI6VGhiSUMwSUJrdmV0WkxybjlOZERZZjd2",
+    Accept: "application/json",
+    "cache-control": "no-cache",
+    Host: "api.razorpay.com",
+  },
+  body: JSON.stringify({
+    amount: 50000,
+    currency: "INR",
+    receipt: "rcptid_11",
+  }),
+})
+  .then((response) => response.json())
+  .then((data) => {
+    console.log("data", data);
+  });
 
 var options = {
-  key: "rzp_test_VuJToLeEptIA91",
+  key: "rzp_test_yw82UVdqb63LLR",
   amount: "50",
   currency: "INR",
   name: "Construction Materials",
   description: "Bill",
   image:
     "https://thumbs.dreamstime.com/b/vector-logo-building-materials-store-company-201109487.jpg",
-  order_id: "order_IUqGHuugQGHrhl",
+  order_id: "order_IUyFMV6AHCnJ4d",
   handler: function (response) {
     alert(response.razorpay_payment_id);
     alert(response.razorpay_order_id);
