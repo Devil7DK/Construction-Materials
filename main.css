@@ -102,6 +102,8 @@ body {
   cursor: pointer;
   border-radius: 50%;
   border: none;
+  background-color: #8d908f;
+  color: #fff;
 }
 
 #cart:hover {

@@ -133,7 +133,7 @@ function checkIfArrayIsUnique(myArray) {
   return myArray.length === new Set(myArray).size;
 }
 
-// *! ////////////////////////////////////////////////////
+// *! Razorpay ////////////////////////////////////////////////////
 
 var myHeaders = new Headers();
 myHeaders.append(
@@ -162,14 +162,14 @@ fetch("https://api.razorpay.com/v1/orders", requestOptions)
   .catch((error) => console.log("error", error));
 
 var options = {
-  key: "rzp_test_VuJToLeEptIA91", // Enter the Key ID generated from the Dashboard
-  amount: "50", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+  key: "rzp_test_VuJToLeEptIA91",
+  amount: "50",
   currency: "INR",
   name: "Construction Materials",
   description: "Bill",
   image:
     "https://thumbs.dreamstime.com/b/vector-logo-building-materials-store-company-201109487.jpg",
-  order_id: "order_IUqGHuugQGHrhl", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+  order_id: "order_IUqGHuugQGHrhl",
   handler: function (response) {
     alert(response.razorpay_payment_id);
     alert(response.razorpay_order_id);
