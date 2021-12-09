@@ -62,7 +62,6 @@ function addToCart(e) {
   console.log(arr);
 
   if (checkIfArrayIsUnique(arr) == false) {
-    alert(`${eachProductName} is already in cart`);
     arr.pop();
 
     const collectionNames = document.getElementsByClassName("item-name");
@@ -83,8 +82,6 @@ function addToCart(e) {
         $(".total-price")[0].children[1].innerText =
           element.parentElement.children[2].children[0].value *
           Number($(".item-price")[0].innerText);
-
-        return element.innerHTML == array;
       }
     });
 
