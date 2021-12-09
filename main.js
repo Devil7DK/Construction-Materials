@@ -98,7 +98,6 @@ function totalCost(event) {
 function grandTotal() {
   let total = 0;
   let grand_total = document.querySelector(".grand-total");
-
   all_total_fields = document.getElementsByClassName("total-price");
 
   for (let i = 0; i < all_total_fields.length; i++) {
@@ -108,6 +107,7 @@ function grandTotal() {
 
   grand_total.innerHTML = rupeeIcon + total;
   grand_total.style.fontWeight = "bold";
+  return total;
 }
 
 function removeItem(event) {
@@ -118,6 +118,7 @@ function removeItem(event) {
   );
   del_btn_parent.remove();
   grandTotal();
+  console.log(grandTotal());
 
   for (var i = 0; i < arr.length; i++) {
     if (
@@ -134,37 +135,15 @@ function checkIfArrayIsUnique(myArray) {
 }
 
 // *! Razorpay ////////////////////////////////////////////////////
-fetch("https://api.razorpay.com/v1/orders", {
-  method: "POST",
-  mode: "no-cors",
-  headers: {
-    "Content-type": "application/json",
-    Authorization:
-      "Basic cnpwX3Rlc3RfeXc4MlVWZHFiNjNMTFI6VGhiSUMwSUJrdmV0WkxybjlOZERZZjd2",
-    Accept: "application/json",
-    "cache-control": "no-cache",
-    Host: "api.razorpay.com",
-  },
-  body: JSON.stringify({
-    amount: 50000,
-    currency: "INR",
-    receipt: "rcptid_11",
-  }),
-})
-  .then((response) => response.json())
-  .then((data) => {
-    console.log("data", data);
-  });
 
 var options = {
   key: "rzp_test_yw82UVdqb63LLR",
-  amount: "50",
+  amount: `${grandTotal()}`,
   currency: "INR",
   name: "Construction Materials",
   description: "Bill",
   image:
     "https://thumbs.dreamstime.com/b/vector-logo-building-materials-store-company-201109487.jpg",
-  order_id: "order_IUyFMV6AHCnJ4d",
   handler: function (response) {
     alert(response.razorpay_payment_id);
     alert(response.razorpay_order_id);
@@ -182,18 +161,27 @@ var options = {
     color: "#8D908F",
   },
 };
-
 var rzp1 = new Razorpay(options);
-rzp1.on("payment.failed", function (response) {
-  alert(response.error.code);
-  alert(response.error.description);
-  alert(response.error.source);
-  alert(response.error.step);
-  alert(response.error.reason);
-  alert(response.error.metadata.order_id);
-  alert(response.error.metadata.payment_id);
-});
-document.getElementById("rzp-button1").onclick = function (e) {
-  rzp1.open();
+
+// rzp1.on("payment.failed", function (response) {
+//   console.log(totalValue);
+//   alert(response.error.code);
+//   alert(response.error.description);
+//   alert(response.error.source);
+//   alert(response.error.step);
+//   alert(response.error.reason);
+//   alert(response.error.metadata.order_id);
+//   alert(response.error.metadata.payment_id);
+// });
+// let grandTotalValue = Number(document.querySelector(".grand-total").innerHTML);
+
+$("#rzp-button1").click(function (e) {
+  // console.log(Number(e.target.previousElementSibling.children[0].innerText));
+  let totalValue = Number(
+    e.target.previousElementSibling.children[0].innerText
+  );
+  // console.log(grandTotalValue);
+  // console.log(exampleTotal.pop());
+  rzp1.open(totalValue);
   e.preventDefault();
-};
+});
