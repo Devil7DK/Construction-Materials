@@ -17,6 +17,8 @@ $(window).click(function (event) {
   }
 });
 
+// *! Inserting local JSON into document /////////////////////////
+
 $.getJSON("construction.json", function (data) {
   insertProducts(data);
 });
@@ -37,6 +39,8 @@ function insertProducts(data) {
     addToCart(e);
   });
 }
+
+// *! Adding to cart when add is clicked /////////////////////////
 
 const rupeeIcon = '<i class="fa fa-inr"></i>';
 let arr = [];
@@ -60,6 +64,31 @@ function addToCart(e) {
   if (checkIfArrayIsUnique(arr) == false) {
     alert(`${eachProductName} is already in cart`);
     arr.pop();
+
+    const collectionNames = document.getElementsByClassName("item-name");
+    console.log(collectionNames);
+
+    [...collectionNames].forEach((element) => {
+      function checkTest(array) {
+        console.log(array);
+
+        if (element.innerHTML == array) {
+          console.log(element.parentElement.children[2].children[0]);
+          element.parentElement.children[2].children[0].value =
+            +element.parentElement.children[2].children[0].value + 1;
+        }
+
+        grandTotal();
+
+        $(".total-price")[0].children[1].innerText =
+          element.parentElement.children[2].children[0].value *
+          Number($(".item-price")[0].innerText);
+
+        return element.innerHTML == array;
+      }
+    });
+
+    $(".num").value = +5;
     modal.lastElementChild.remove();
     return;
   }
