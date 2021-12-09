@@ -59,33 +59,20 @@ function addToCart(e) {
   </div>`);
 
   arr.push(eachProductName);
-  console.log(arr);
+
+  console.log(checkIfArrayIsUnique(arr));
+  const nameCollection = document.getElementsByClassName("item-name");
 
   if (checkIfArrayIsUnique(arr) == false) {
-    arr.pop();
-
-    const collectionNames = document.getElementsByClassName("item-name");
-    console.log(collectionNames);
-
-    [...collectionNames].forEach((element) => {
-      function checkTest(array) {
-        console.log(array);
-
-        if (element.innerHTML == array) {
-          console.log(element.parentElement.children[2].children[0]);
-          element.parentElement.children[2].children[0].value =
-            +element.parentElement.children[2].children[0].value + 1;
-        }
-
-        grandTotal();
-
-        $(".total-price")[0].children[1].innerText =
-          element.parentElement.children[2].children[0].value *
-          Number($(".item-price")[0].innerText);
+    [...nameCollection].forEach((element) => {
+      if (element.innerText == eachProductName) {
+        element.parentElement.children[2].children[0].value++;
       }
     });
 
-    $(".num").value = +5;
+    console.dir(eachProductName);
+    arr.pop();
+
     modal.lastElementChild.remove();
     return;
   }
@@ -100,6 +87,12 @@ function addToCart(e) {
   }
 
   grandTotal();
+}
+
+function checkIfArrayIsUnique(myArray) {
+  console.log(new Set(myArray).size);
+
+  return myArray.length === new Set(myArray).size;
 }
 
 function totalCost(event) {
@@ -151,10 +144,6 @@ function removeItem(event) {
       arr.splice(i, 1);
     }
   }
-}
-
-function checkIfArrayIsUnique(myArray) {
-  return myArray.length === new Set(myArray).size;
 }
 
 // *! Razorpay ////////////////////////////////////////////////////
