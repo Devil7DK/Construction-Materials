@@ -24,15 +24,13 @@ $.getJSON("construction.json", function (data) {
 function insertProducts(data) {
   data.map((element) => {
     const productName = element.id;
-    const eachProduct = document.createElement("div");
-    eachProduct.classList.add("each-product");
-    eachProduct.innerHTML = `
-    <p class='product-name'>${productName}</p>
-    <button data-value="${element.price}" class='add-cart'>addtocart</button>
-    <img class='img' src='${element.image}' >
-    `;
 
-    $("#container").append(eachProduct);
+    $("#container").append(`
+    <div class='each-product'>
+      <p class='product-name'>${productName}</p>
+      <button data-value="${element.price}" class='add-cart'>addtocart</button>
+      <img class='img' src='${element.image}' >
+    </div>`);
   });
 
   $(".add-cart").click(function (e) {
@@ -46,16 +44,15 @@ let arr = [];
 function addToCart(e) {
   const eachModalPrice = e.target.dataset.value;
   const eachProductName = e.target.previousElementSibling.innerHTML;
-  const eachModalProduct = document.createElement("div");
-  eachModalProduct.classList.add("each-modal-product");
 
-  eachModalProduct.innerHTML = `
-  <span class='item-name'>${eachProductName}</span>
-  <span class='item-price'>${eachModalPrice}</span>
-  <span><input type = 'number' class = 'num' value = '1'></span>
-  <span class="total-price">${rupeeIcon}<span>${eachModalPrice}</span></span>
-  <span><button class="modal-remove" type="button">Remove</button></span>`;
-  $(modal).append(eachModalProduct);
+  $(modal).append(`
+  <div class='each-modal-product'>
+    <span class='item-name'>${eachProductName}</span>
+    <span class='item-price'>${eachModalPrice}</span>
+    <span><input type = 'number' class = 'num' value = '1'></span>
+    <span class="total-price">${rupeeIcon}<span>${eachModalPrice}</span></span>
+    <span><button class="modal-remove" type="button">Remove</button></span>
+  </div>`);
 
   arr.push(eachProductName);
   console.log(arr);
@@ -138,7 +135,7 @@ function checkIfArrayIsUnique(myArray) {
 
 var options = {
   key: "rzp_test_yw82UVdqb63LLR",
-  amount: `${grandTotal()}`,
+  amount: 50000,
   currency: "INR",
   name: "Construction Materials",
   description: "Bill",
