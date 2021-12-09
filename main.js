@@ -62,11 +62,16 @@ function addToCart(e) {
 
   console.log(checkIfArrayIsUnique(arr));
   const nameCollection = document.getElementsByClassName("item-name");
+  grandTotal();
 
   if (checkIfArrayIsUnique(arr) == false) {
     [...nameCollection].forEach((element) => {
       if (element.innerText == eachProductName) {
         element.parentElement.children[2].children[0].value++;
+        let newValue = element.parentElement.children[2].children[0].value;
+        console.log(element.parentElement.children[3].innerText);
+        element.parentElement.children[3].innerText =
+          newValue * element.parentElement.children[3].innerText;
       }
     });
 
