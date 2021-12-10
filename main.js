@@ -151,35 +151,6 @@ function removeItem(event) {
   }
 }
 
-// *! Razorpay ////////////////////////////////////////////////////
-
-var options = {
-  key: "rzp_test_yw82UVdqb63LLR",
-  amount: 50000,
-  currency: "INR",
-  name: "Construction Materials",
-  description: "Bill",
-  image:
-    "https://thumbs.dreamstime.com/b/vector-logo-building-materials-store-company-201109487.jpg",
-  handler: function (response) {
-    alert(response.razorpay_payment_id);
-    alert(response.razorpay_order_id);
-    alert(response.razorpay_signature);
-  },
-  prefill: {
-    name: "Abilash",
-    email: "abimugunthan2000@gmail.com",
-    contact: "9943167123",
-  },
-  notes: {
-    address: "Razorpay Corporate Office",
-  },
-  theme: {
-    color: "#8D908F",
-  },
-};
-var rzp1 = new Razorpay(options);
-
 // rzp1.on("payment.failed", function (response) {
 //   console.log(totalValue);
 //   alert(response.error.code);
@@ -197,8 +168,34 @@ $("#rzp-button1").click(function (e) {
   let totalValue = Number(
     e.target.previousElementSibling.children[0].innerText
   );
-  // console.log(grandTotalValue);
-  // console.log(exampleTotal.pop());
-  rzp1.open(totalValue);
+
+  var options = {
+    key: "rzp_test_yw82UVdqb63LLR",
+    amount: totalValue * 100, // Convert to paise
+    currency: "INR",
+    name: "Construction Materials",
+    description: "Bill",
+    image:
+      "https://thumbs.dreamstime.com/b/vector-logo-building-materials-store-company-201109487.jpg",
+    handler: function (response) {
+      alert(response.razorpay_payment_id);
+      alert(response.razorpay_order_id);
+      alert(response.razorpay_signature);
+    },
+    prefill: {
+      name: "Abilash",
+      email: "abimugunthan2000@gmail.com",
+      contact: "9943167123",
+    },
+    notes: {
+      address: "Razorpay Corporate Office",
+    },
+    theme: {
+      color: "#8D908F",
+    },
+  };
+
+  var rzp1 = new Razorpay(options);
+  rzp1.open();
   e.preventDefault();
 });
