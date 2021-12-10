@@ -1,12 +1,12 @@
 [
-  { "id": "Brass", "price": "100", "image": "/images/brass.jpg" },
-  { "id": "Stone", "price": "50", "image": "/images/stone.jpeg" },
-  { "id": "Granite", "price": "500", "image": "/images/granite.jpg" },
-  { "id": "Plexiglass", "price": "150", "image": "/images/plexiglass.jpg" },
-  { "id": "Wood", "price": "200", "image": "/images/wood.jpg" },
-  { "id": "Glass", "price": "80", "image": "/images/glass.jpg" },
-  { "id": "Rubber", "price": "50", "image": "/images/rubber.jpg" },
-  { "id": "Plastic", "price": "30", "image": "/images/plastic.jpg" },
-  { "id": "Aluminum", "price": "200", "image": "/images/aluminum.jpg" },
-  { "id": "Vinyl", "price": "120", "image": "/images/vinyl.jpg" }
+  { "id": "Brass", "price": "100", "image": "images/brass.jpg" },
+  { "id": "Stone", "price": "50", "image": "images/stone.jpeg" },
+  { "id": "Granite", "price": "500", "image": "images/granite.jpg" },
+  { "id": "Plexiglass", "price": "150", "image": "images/plexiglass.jpg" },
+  { "id": "Wood", "price": "200", "image": "images/wood.jpg" },
+  { "id": "Glass", "price": "80", "image": "images/glass.jpg" },
+  { "id": "Rubber", "price": "50", "image": "images/rubber.jpg" },
+  { "id": "Plastic", "price": "30", "image": "images/plastic.jpg" },
+  { "id": "Aluminum", "price": "200", "image": "images/aluminum.jpg" },
+  { "id": "Vinyl", "price": "120", "image": "images/vinyl.jpg" }
 ]
